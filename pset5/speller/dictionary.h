@@ -9,10 +9,24 @@
 // (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
 #define LENGTH 45
 
+#define MPATH 27
+
+
 // Prototypes
 bool check(const char *word);
 bool load(const char *dictionary);
 unsigned int size(void);
 bool unload(void);
+
+typedef struct trie
+{
+    bool isword;
+
+    struct trie* paths[MPATH];
+}
+trie;
+
+void unload_recursive(trie* pointer);
+
 
 #endif // DICTIONARY_H
