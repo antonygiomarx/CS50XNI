@@ -28,6 +28,7 @@ def split_to_substrings(list_of_strings, length):
 
     return substrings
 
+
 def lines(a, b):
     """Return lines in both a and b"""
     return equal_items(a.splitlines(), b.splitlines())
