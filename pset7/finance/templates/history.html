@@ -1,0 +1,46 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+
+    History
+
+{% endblock %}
+
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>{{total}}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for i in portfolio %}
+                {%for j in i %}
+                <tr>
+                    <td>
+                        {{j.symbol}}
+                    </td>
+                    <td>
+                        {{j.shares}}
+                    </td>
+                    <td>
+                        {{ "£%.2f"|format(j.at_price|float) }}
+                    </td>
+                    <td>
+                        {{j.time_date}}
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    {% endblock %}

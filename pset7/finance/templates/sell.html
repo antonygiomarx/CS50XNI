@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <select name="symbol" class="form-control">
+                {% for o in list %}
+                <option value="{{o}}">
+                    {{o}}
+                </option>
+                {% endfor %}
+
+                <option disabled value="">Symbol</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="number" autocomplete="off" nim="0" name="shares" placeholder="Shares" class="form-control">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">
+                Sell
+            </button>
+        </div>
+    </form>
+{% endblock %}
