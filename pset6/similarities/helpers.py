@@ -1,44 +1,36 @@
-from nltk.tokenize import sent_tokenize
-
-
-def equal_items(list_items, list_items_to_compare):
-
-    equals = []
-
-    for item in list_items:
-        if item in list_items_to_compare and item not in equals:
-            equals.append(item)
-
-    return equals
-
-
-def split_to_substrings(list_of_strings, length):
-
-    index = 0
-    substrings = []
-
-    string = ""
-
-    string = " ".join(string.splitlines())
-
-    while(index < len(string)):
-        if lenght <= len(string[index:lenght + index]):
-            substrings.append(string[index: lenght + index])
-        index += 1
-
-    return substrings
-
+ from nltk.tokenize import sent_tokenize
 
 def lines(a, b):
     """Return lines in both a and b"""
-    return equal_items(a.splitlines(), b.splitlines())
+    q = set(a.splitlines())
+    r = set(b.splitlines())
+
+    return list(q & r)
 
 
 def sentences(a, b):
     """Return sentences in both a and b"""
-    return equal_items(sent_tokenize(a), sent_tokenize(b))
+
+    q = set(sent_tokenize(a))
+    r = set(sent_tokenize(b))
+
+    return list(q & r)
 
 
 def substrings(a, b, n):
     """Return substrings of length n in both a and b"""
-    return equal_items(split_to_substrings(a, n), split_to_substrings(b, n))
+    q = set(substringHelper(a, n))
+    r = set(substringHelper(b, n))
+
+    return list(q & r)
+
+def substringHelper(a, n):
+    l = []
+    x = 0
+    while x<n:
+        y = x
+        while y < (len(a)+1-n):
+            l.append(a[y:y+n])
+            y+=n
+        x+=1
+    return l
